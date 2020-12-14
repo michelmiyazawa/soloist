@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
-  
+
   def show
     @user = User.find(params[:id])
   end
 
   def index
+    @users = User.all
   end
 
   def edit
@@ -18,9 +19,14 @@ class UsersController < ApplicationController
   end
 
   def quit
+    @user = User.find(params[:id])
   end
 
   def destroy
+    @user = User.find(params[:id]) 
+    @user.destroy
+    flash[:success] = 'ユーザーを削除しました。'
+    redirect_to :root
   end
 
   private

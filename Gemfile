@@ -76,3 +76,4 @@ gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'rubocop'
 gem 'kaminari'
+gem "geocoder"

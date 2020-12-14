@@ -1,0 +1,28 @@
+<h1>店舗登録</h1>
+<%= form_with model: @shop, local: true do |f| %>
+<%= f.label :name, "店名" %>
+<%= f.text_field :name %>
+<%= f.label :name_kana, "店名（かな）" %>
+<%= f.text_field :name_kana %>
+<%= f.select :prefecture, Shop.prefectures.keys, {} %>
+<%= f.select :genre_id, Genre.genre_names.keys, {} %>
+<%= f.label :zipcode, "郵便番号" %>
+<%= f.text_field :zipcode %>
+<%= f.label :address, "住所" %>
+<%= f.text_field :address %>
+<%= f.label :phonenumber, "TEL" %>
+<%= f.text_field :phonenumber %>
+<%= f.label :hp, "HP" %>
+<%= f.text_field :hp %>
+<%= f.label :regular_holiday, "定休日" %>
+<%= f.text_field :regular_holiday %>
+<%= f.label :opning_hours, "営業時間" %>
+<%= f.text_field :opning_hours %>
+<%= f.label :acsess, "アクセス" %>
+<%= f.text_field :acsess %>
+<%= f.label :parking, "駐車場" %>
+<%= f.text_field :parking %>
+<%= f.label :seats, "座席数" %>
+<%= f.text_field :seats %>
+<%= f.submit %>
+<% end %>

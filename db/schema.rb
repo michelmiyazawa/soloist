@@ -10,7 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_10_053626) do
+ActiveRecord::Schema.define(version: 2020_12_13_073527) do
+
+  create_table "genres", force: :cascade do |t|
+    t.string "name"
+    t.integer "genre_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "shops", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "name_kana", null: false
+    t.integer "prefecture", null: false
+    t.string "address", null: false
+    t.string "zipcode", null: false
+    t.string "phonenumber", null: false
+    t.string "hp"
+    t.string "regular_holiday", null: false
+    t.string "opning_hours", null: false
+    t.string "acsess", null: false
+    t.string "parking", null: false
+    t.string "seats", null: false
+    t.integer "payment"
+    t.integer "facility"
+    t.integer "genre_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.float "latitude"
+    t.float "longitude"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
