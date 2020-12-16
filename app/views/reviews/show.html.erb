@@ -1,3 +1,37 @@
-
-<%= @shop.name %>
-<%= @shop.review %>
+<h1>レビュー詳細</h1>
+<table class="table">
+<tr>
+<th><p>店名</p></th>
+<td><%= @shop.name %></td>
+</tr>
+<th><p>レビュー</p>
+<%= @review.review %>
+</th>
+<% if @review.review_images.present? %>
+  <% @review.review_images.each do |review_image| %>
+    <%= attachment_image_tag review_image, :review_image, size: "500x300" %>
+  <% end %>
+<% else %>
+  <%= image_tag 'no_image.jpg', size: '200x200' %>
+<% end %>
+<p></p>
+<%= @review.use_time %>
+<p></p>
+<%= @review.visit_date %>
+<p></p>
+<%= @review.rate %>
+<p></p>
+<%= @review.space %>
+<p></p>
+<%= @review.bgm %>
+<p></p>
+<%= @review.eyes %>
+<p></p>
+<%= @review.soloist %>
+<p></p>
+<%= @review.volume %>
+<p></p>
+<%= @review.busy %>
+</table>
+<%= link_to "編集", edit_shop_review_path(@shop.id, @review.id) %>
+<%= link_to "削除", shop_review_path(@review), method: :delete %>

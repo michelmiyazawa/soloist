@@ -1,0 +1,39 @@
+<div class="container">
+<%= form_with(model:[@shop, @review], local: true) do |f| %>
+  <div class="row">
+    <div class="col-sm-12">
+     <%= f.label :title, "タイトル" %>
+     <%= f.text_field :title %>
+     <%= f.text_area :review, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
+     <%= f.label :bgm, "BGM" %>
+     <%= f.text_field :bgm %>
+     <%= f.label :space, "距離感" %>
+     <%= f.text_field :space %>
+     <%= f.label :volume, "ご飯の量" %>
+     <%= f.text_field :volume %>
+     <%= f.label :eyes, "周りの視線" %>
+     <%= f.text_field :eyes %>
+     <%= f.label :busy, "賑やかさ" %>
+     <%= f.text_field :busy %>
+     <%= f.label :soloist, "soloist率" %>
+     <%= f.text_field :soloist %>
+     <%= f.label :use_time, "時間帯" %>
+     <div class="field">
+    <%= f.label :morning, "朝" %>
+    <%= f.radio_button :use_time, :morning %>
+    <%= f.label :evening, "昼" %>
+    <%= f.radio_button :use_time, :evening %>
+    <%= f.label :night, "夜" %>
+    <%= f.radio_button :use_time, :night %>
+    </div>
+     <%= f.label :visit_date, "訪問日時" %>
+     <%= f.date_field :visit_date, use_month_numbers: true, start_year: 2020, end_year: (Time.now.year - 10), default: Date.new(2020, 1, 1) %>
+  </div>
+  <tr>
+        <td>画像</td>
+        <td><%= f.attachment_field :review_images_review_images, multiple: true %></td>
+      </tr>
+  <%= f.submit "更新する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+<% end %>
+</div>
+</div>

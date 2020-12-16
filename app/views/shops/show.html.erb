@@ -16,10 +16,10 @@
   <%= link_to "店舗編集",edit_shop_path(@shop) %>
   <% if @shop.shop_images.present? %>
   <% @shop.shop_images.each do |image| %>
-    <%= attachment_image_tag image, :image, size: "500x300", class: "default_image" %>
+    <%= attachment_image_tag image, :image, size: "500x300" %>
   <% end %>
 <% else %>
-  画像はありません。
+  <%= image_tag 'no_image.jpg', size: '200x200' %>
 <% end %>
   <tr>
     <th class="table-active">住所</th>
@@ -73,6 +73,7 @@
   <td><%= @shop.reviews.count %></td>
   <h2 class="comment-count"><%= @shop.reviews.count %>件コメント</h2>
   <%= link_to "レビューを投稿する", new_shop_review_path(@shop) %>
+  <%= link_to "レビュー一覧", shop_reviews_path(@shop) %>
 </table>
 </div>
 </div>

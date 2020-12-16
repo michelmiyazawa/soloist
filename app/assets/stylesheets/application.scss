@@ -10,8 +10,35 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- 
- 
- 
+
+
+
  */
  @import "bootstrap";
+
+ .about-body {
+   background-color: #f5f5f5;
+   padding-top: 200px;
+   padding-bottom: 400px;
+ }
+
+.about-top {
+  padding-bottom: 10px;
+  letter-spacing: 2px;
+}
+ .about-text {
+  letter-spacing: 2px;
+}
+
+.top-body {
+  background-image: image-url('soloist.jpg');
+  background-size:  cover;
+  width: auto;
+  height: 500px;
+}
+.top-logo {
+  letter-spacing: 2px;
+  color: #ffffff;
+  padding: 150px;
+  font-size: 100px;
+}

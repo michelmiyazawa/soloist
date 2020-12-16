@@ -1,0 +1,22 @@
+<% @reviews.each do |review| %>
+<%= link_to shop_review_path(@shop.id, review.id) do %>
+  <%= review.title %>
+<% end %>
+<% if review.review_images.present? %>
+  <% review.review_images.each do |review_image| %>
+    <%= attachment_image_tag review_image, :review_image, size: "100x100" %>
+  <% end %>
+<% else %>
+  <%= image_tag 'no_image.jpg', size: '100x100' %>
+<% end %>
+  <%= review.review %>
+  <%= review.use_time %>
+  <%= review.visit_date %>
+  <%= review.rate %>
+  <%= review.space %>
+  <%= review.bgm %>
+  <%= review.eyes %>
+  <%= review.soloist %>
+  <%= review.volume %>
+  <%= review.busy %>
+<% end %>
