@@ -8,6 +8,8 @@ Rails.application.routes.draw do
       get 'quit'
     end
   end
-  resources :shops
+  resources :shops do
+    resources :reviews
+  end 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   end

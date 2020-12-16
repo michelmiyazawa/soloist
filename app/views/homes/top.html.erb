@@ -1,10 +1,1 @@
-<h1>soloist</h1>
-<% if user_signed_in? %>
-<%= link_to "マイページ", user_path(current_user.id) %>
-<%= button_to 'ログアウト', destroy_user_session_path, method: :delete %>
-<%= link_to "店舗登録", new_shop_path %>
-<% else %>
-<%= link_to "新規登録", new_user_registration_path %>
-<%= link_to "ログイン", new_user_session_path %>
-
-<% end %>
+<h1>soloistトップページ</h1>

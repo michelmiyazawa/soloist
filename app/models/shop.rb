@@ -1,7 +1,12 @@
 class Shop < ApplicationRecord
   belongs_to :genre, optional: true
+  has_many :reviews, dependent: :destroy
+  has_many :shop_images, dependent: :destroy
+  accepts_attachments_for :shop_images, attachment: :image
+  
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
+  
   enum prefecture:{
      "---":0,
      北海道:1,青森県:2,岩手県:3,宮城県:4,秋田県:5,山形県:6,福島県:7,

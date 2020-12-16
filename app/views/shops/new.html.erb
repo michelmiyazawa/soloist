@@ -24,5 +24,9 @@
 <%= f.text_field :parking %>
 <%= f.label :seats, "座席数" %>
 <%= f.text_field :seats %>
+ <tr>
+        <td>画像</td>
+        <td><%= f.attachment_field :shop_images_images, multiple: true %></td>
+      </tr>
 <%= f.submit %>
 <% end %>

@@ -5,4 +5,6 @@
 <%= @user.sex %>
 <%= @user.date_of_birth %>
 <%= @user.introduction %>
-<%= link_to "情報編集", edit_user_path %>
+<% if @user.id == current_user.id %>
+  <%= link_to "情報編集", edit_user_path(current_user.id)  %>
+<% end %>

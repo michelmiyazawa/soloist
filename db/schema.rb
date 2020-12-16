@@ -10,13 +10,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_13_073527) do
+ActiveRecord::Schema.define(version: 2020_12_15_052303) do
 
   create_table "genres", force: :cascade do |t|
     t.string "name"
     t.integer "genre_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "shop_id", null: false
+    t.float "rate", default: 0.0, null: false
+    t.text "review"
+    t.string "bgm"
+    t.string "space"
+    t.string "volume"
+    t.string "eyes"
+    t.string "busy"
+    t.string "soloist"
+    t.date "visit_date"
+    t.integer "use_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "shop_images", force: :cascade do |t|
+    t.integer "shop_id", null: false
+    t.string "image_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["shop_id"], name: "index_shop_images_on_shop_id"
   end
 
   create_table "shops", force: :cascade do |t|
