@@ -371,7 +371,7 @@ DEPENDENCIES
   gon
   jbuilder (~> 2.5)
   jquery-rails
-  kaminari
+  kaminari (~> 1.2.1)
   listen (>= 3.0.5, < 3.2)
   omniauth
   omniauth-twitter

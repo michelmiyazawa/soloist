@@ -1,0 +1,9 @@
+ ja:
+  activerecord:
+    models:
+      review: レビュー
+    attributes:
+      review:
+        rate: 点数(星)
+        title: タイトル
+

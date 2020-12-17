@@ -1,9 +1,17 @@
+<div class="container">
 <h1>レビュー詳細</h1>
 <table class="table">
 <tr>
 <th><p>店名</p></th>
 <td><%= @shop.name %></td>
 </tr>
+
+
+
+<div id="rate<%= @review.id%>"></div>
+
+
+
 <th><p>レビュー</p>
 <%= @review.review %>
 </th>
@@ -33,5 +41,26 @@
 <p></p>
 <%= @review.busy %>
 </table>
+
+<!--いいね-->
+ <div id="favorites_buttons_<%= @review.id %>">
+    <%= render partial: 'favorites/favorite', locals: {review: @review, shop: @shop} %>
+  </div>
+
+
+
+
 <%= link_to "編集", edit_shop_review_path(@shop.id, @review.id) %>
 <%= link_to "削除", shop_review_path(@review), method: :delete %>
+</div>
+
+
+<script>
+  $('#rate<%= @review.id%>').raty({
+    size      : 36,
+    starOff   : '<%= asset_path('star-off.png') %>',
+    starOn    : '<%= asset_path('star-on.png') %>',
+    readOnly: true,
+    score: <%= @review.rate %>,
+  });
+</script>

@@ -9,8 +9,6 @@ class ReviewsController < ApplicationController
     @shop = Shop.find(params[:shop_id])
     @review = current_user.reviews.new(review_params)
     @review.shop_id = @shop.id
-    # レビューを実装したら消す
-    @review.rate = rand(5)
     if @review.save
       redirect_to shop_path(@shop.id)
     else
@@ -47,11 +45,12 @@ class ReviewsController < ApplicationController
 
   def index
     @shop = Shop.find(params[:shop_id])
-    @reviews = Review.all
+    # kaminari
+    @reviews = Review.page(params[:page]).reverse_order
   end
 
   private
   def review_params
-    params.require(:review).permit(:review, :shop_id, :use_time, :visit_date, :bgm, :soloist, :space, :volume, :eyes, :busy , :title,  review_images_review_images: [])
+    params.require(:review).permit(:rate, :review, :shop_id, :use_time, :visit_date, :bgm, :soloist, :space, :volume, :eyes, :busy , :title,  review_images_review_images: [])
   end
 end

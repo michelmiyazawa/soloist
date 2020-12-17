@@ -3,10 +3,10 @@ class Shop < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :shop_images, dependent: :destroy
   accepts_attachments_for :shop_images, attachment: :image
-  
+
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
-  
+
   enum prefecture:{
      "---":0,
      北海道:1,青森県:2,岩手県:3,宮城県:4,秋田県:5,山形県:6,福島県:7,
@@ -19,4 +19,5 @@ class Shop < ApplicationRecord
      福岡県:40,佐賀県:41,長崎県:42,熊本県:43,大分県:44,宮崎県:45,鹿児島県:46,
      沖縄県:47
    }
+  # validates :name_kana, presence: true, format: { with: /\p{Hiragana}/}
 end

@@ -1,9 +1,24 @@
 <div class="container">
+
+
 <%= form_with(model:[@shop, @review], method: :post, local: true) do |f| %>
+<%= render 'layouts/error_messages', model: f.object %>
   <div class="row">
     <div class="col-sm-12">
+
      <%= f.label :title, "タイトル" %>
      <%= f.text_field :title %>
+
+    <!--星型のレート機能-->
+    <%= f.hidden_field :shop_id, value: @shop.id %>
+    <div class="col-md-6 col-md-offset-3">
+        <div class="field" id="rate">
+            <%= f.label :rate %>
+            <%= f.hidden_field :rate, id: :review_rate %>
+        </div>
+    </div>
+
+
      <%= f.text_area :review, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
      <%= f.label :bgm, "BGM" %>
      <%= f.text_field :bgm %>
@@ -33,7 +48,18 @@
         <td>画像</td>
         <td><%= f.attachment_field :review_images_review_images, multiple: true %></td>
       </tr>
-  <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+  <%= f.submit "送信する", class: "btn btn-primary" %>
 <% end %>
 </div>
 </div>
+
+
+<script>
+$('#rate').raty({
+  size     : 36,
+  starOff:  '<%= asset_path('star-off.png') %>',
+  starOn : '<%= asset_path('star-on.png') %>',
+  starHalf: '<%= asset_path('star-half.png') %>',
+  scoreName: 'review[rate]'
+});
+</script>

@@ -6,7 +6,7 @@ class ShopsController < ApplicationController
 
   def create
     @shop = Shop.new(shop_params)
-    @shop.save!
+    @shop.save
     redirect_to shop_path(@shop.id), notice:"「登録しました」"
   end
 

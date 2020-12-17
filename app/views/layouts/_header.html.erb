@@ -22,11 +22,18 @@
        <%= link_to "店舗一覧", shops_path, class: 'nav-link'  %>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+    <!--検索フォーム-->
+     <%= search_form_for @search do |f| %>
+    <%= f.label :name, "なにかお探しですか？" %>
+      <%= f.search_field :name_cont %>
+      <%= f.submit "検索" %>
+      <% end %>
+    <!--<form class="form-inline my-2 my-lg-0">-->
+    <!--  <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">-->
+    <!--  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
+    <!--</form>-->
     <% else %>
+    <%= link_to "soloist", :root %>
         <ul class="navbar-nav mr-auto">
       <li class="nav-item">
         <%= link_to "soloistとは？", homes_about_path, class: 'nav-link' %>
@@ -44,10 +51,15 @@
        <%= link_to "店舗一覧", shops_path, class: 'nav-link'  %>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+     <%= search_form_for @search do |f| %>
+    <%= f.label :name, "なにかお探しですか？" %>
+      <%= f.search_field :name_cont %>
+      <%= f.submit "検索" %>
+      <% end %>
+    <!--<form class="form-inline my-2 my-lg-0">-->
+    <!--  <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">-->
+    <!--  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
+    <!--</form>-->
     <% end %>
   </div>
 </nav>
