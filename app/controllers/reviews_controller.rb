@@ -41,6 +41,7 @@ class ReviewsController < ApplicationController
   def show
     @shop = Shop.find(params[:shop_id])
     @review = Review.find(params[:id])
+    
   end
 
   def index

@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="raw">
+    <% if current_user.id == @user.id %>
+      <%= link_to "編集する", edit_user_path(@user.id) %>
+      <% end %>
+    <div class="mypage-top">
+      <%= attachment_image_tag @user, :profile_image, size: "60x60", fallback: "no_image.jpg", class: "user-img" %>
+      <%= @user.name %>
+    <%= @user.sex %>
+    <%= @user.date_of_birth %>
+    <%= @user.introduction %>
+    </div>
+  </div>
+  <div class="raw">
+    レビュー投稿<%= @user.reviews.count %>件
+    <% @user.reviews.each do |review| %>
+    <table class="table">
+      <th>タイトル <%= review.title %></th>
+      <td>
+       評価<%= review.rate %>
+     </td>
+     <td> <% review.review_images.each do |review_image| %>
+    <%= attachment_image_tag review_image, :review_image, size: "100x80" %>
+  <% end %></td>
+    <% end %>
+    </table>
+  </div>
+</div>

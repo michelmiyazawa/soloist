@@ -14,6 +14,7 @@
   </tr>
 
   <%= link_to "店舗編集",edit_shop_path(@shop) %>
+  <!--画像表示-->
   <% if @shop.shop_images.present? %>
   <% @shop.shop_images.each do |image| %>
     <%= attachment_image_tag image, :image, size: "500x300" %>
