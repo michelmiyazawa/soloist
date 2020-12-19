@@ -68,7 +68,6 @@ gem 'refile', require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 gem 'bootstrap', '~> 4.1.1'
 gem 'jquery-rails'
-gem 'dotenv-rails'
 gem 'pry-byebug'
 gem 'cancancan'
 gem 'ransack'
@@ -81,3 +80,7 @@ gem "geocoder"
 gem "gon"
 gem 'devise-i18n'
 gem 'devise-i18n-views'
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
