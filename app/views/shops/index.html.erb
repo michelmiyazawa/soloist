@@ -1,0 +1,25 @@
+<h1>Shops#index</h1>
+<div class="container">
+  <% @shops.each do |shop| %>
+  <table  class='table table-bordered'>
+  <tr>
+    <th class="table-active col-xs-2">店名</th>
+    <td><%= link_to "#{shop.name}", shop_path(shop.id) %></td>
+  </tr>
+  <tr>
+    <th class="table-active">ジャンル</th>
+    <td><%= shop.genre_id %></td>
+  </tr>
+  <tr>
+    <td><% if shop.shop_images.present? %>
+  <% shop.shop_images.each do |image| %>
+    <%= attachment_image_tag image, :image, size: "200x150" %>
+  <% end %>
+<% else %>
+  <%= image_tag 'no_image.jpg', size: '200x150' %>
+<% end %>
+</td>
+</tr>
+  <% end %>
+</table>
+</div>

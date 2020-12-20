@@ -1,0 +1,122 @@
+<div class="container">
+ <table class="table">
+<h1>店舗登録</h1>
+<%= form_with model: @shop, local: true do |f| %>
+<%= render 'layouts/error_messages', model: f.object %>
+<tr>
+<th>
+<%= f.label :name, "店名" %>
+</th>
+<td>
+ <%= f.text_field :name %>
+</td>
+</tr>
+<tr>
+<th>
+<%= f.label :name_kana, "店名（かな）" %>
+</th>
+<td>
+ <%= f.text_field :name_kana %>
+</td>
+</tr>
+
+<tr>
+<th>
+ <%= f.label :prefecture, "都道府県" %></th>
+　<td><%= f.select :prefecture, Shop.prefectures.keys, {} %></td>
+　</tr>
+<tr>
+<th>
+ <%= f.label :genre_id, "ジャンル" %>
+</th>
+<td>
+ <%= f.select :genre_id, Genre.genre_names.keys, {} %>
+</td>
+
+</tr>
+<tr>
+<th>
+<%= f.label :zipcode, "郵便番号" %>
+</th>
+<td>
+ <%= f.text_field :zipcode %>
+</td>
+</tr>
+
+<tr>
+<th>
+<%= f.label :address, "住所" %>
+</th>
+<td>
+ <%= f.text_field :address %>
+</td>
+</tr>
+
+<tr>
+<th>
+<%= f.label :phonenumber, "TEL" %>
+</th>
+<td>
+ <%= f.text_field :phonenumber %>
+</td>
+</tr>
+
+<tr>
+<th>
+<%= f.label :hp, "HP" %>
+</th>
+<td>
+<%= f.text_field :hp %>
+</td>
+</tr>
+<tr>
+<th>
+<%= f.label :regular_holiday, "定休日" %>
+</th>
+<td>
+<%= f.text_field :regular_holiday %>
+</td>
+</tr>
+<tr>
+<th>
+<%= f.label :opning_hours, "営業時間" %>
+</th>
+<td>
+<%= f.text_field :regular_holiday %>
+</td>
+</tr>
+<tr>
+<th>
+<%= f.label :acsess, "アクセス" %>
+</th>
+<td>
+<%= f.text_field :acsess %>
+</td>
+</tr>
+<tr>
+<th>
+<%= f.label :parking, "駐車場" %>
+</th>
+<td>
+<%= f.text_field :parking %>
+</td>
+</tr>
+
+<tr>
+<th>
+<%= f.label :seats, "座席数" %>
+</th>
+<td>
+<%= f.text_field :seats %>
+</td>
+</tr>
+<tr>
+ <td>画像</td>
+ <td><%= f.attachment_field :shop_images_images, multiple: true %></td>
+</tr>
+<tr>
+ <th><%= f.submit %></th>
+ </tr>
+<% end %>
+</table>
+</div>

@@ -1,0 +1,80 @@
+
+<div class="container">
+
+<h1><%= @shop.name %></h1>(<%= @shop.name_kana %>)
+<table  class='table table-bordered'>
+  <h1>店舗詳細</h1>
+  <tr>
+    <th class="table-active col-xs-2">店名</th>
+    <td><%= @shop.name %>(<%= @shop.name_kana %>)</td>
+  </tr>
+  <tr>
+    <th class="table-active">ジャンル</th>
+    <td><%= @shop.genre_id %></td>
+  </tr>
+
+  <%= link_to "店舗編集",edit_shop_path(@shop) %>
+  <!--画像表示-->
+  <% if @shop.shop_images.present? %>
+  <% @shop.shop_images.each do |image| %>
+    <%= attachment_image_tag image, :image, size: "500x300" %>
+  <% end %>
+<% else %>
+  <%= image_tag 'no_image.jpg', size: '200x200' %>
+<% end %>
+  <tr>
+    <th class="table-active">住所</th>
+    <td><%= @shop.address %></td>
+  </tr>
+  <tr>
+    <th class="table-active">アクセス</th>
+    <td><%= @shop.acsess %></td>
+  </tr>
+  <tr>
+    <th class="table-active">営業時間</th>
+    <td><%= @shop.opning_hours %></td>
+  </tr>
+  <tr>
+    <th class="table-active">定休日</th>
+    <td><%= @shop.regular_holiday %></td>
+  </tr>
+  <tr>
+    <th class="table-active">支払い方法</th>
+    <td><%= @shop.payment %></td>
+  </tr>
+  <tr>
+    <th class="table-active">座席数</th>
+    <td><%= @shop.seats %></td>
+  </tr>
+  <tr>
+    <th class="table-active">設備</th>
+    <td><%= @shop.facility %></td>
+  </tr>
+  <tr>
+    <th class="table-active">駐車場</th>
+    <td><%= @shop.parking %></td>
+  </tr>
+  <tr>
+    <th class="table-active">TEL</th>
+    <td><%= @shop.phonenumber %></td>
+  </tr>
+  <tr>
+    <th class="table-active">HP</th>
+    <td><%= @shop.hp %></td>
+  </tr>
+  <tr>
+    <th class="table-active">都道府県</th>
+    <td><%= @shop.prefecture %></td>
+  </tr>
+  <tr>
+    <th class="table-active">郵便番号</th>
+    <td><%= @shop.zipcode %></td>
+  </tr>
+  <tr>
+  <td><%= @shop.reviews.count %></td>
+  <h2 class="comment-count"><%= @shop.reviews.count %>件コメント</h2>
+  <%= link_to "レビューを投稿する", new_shop_review_path(@shop) %>
+  <%= link_to "レビュー一覧", shop_reviews_path(@shop) %>
+</table>
+</div>
+</div>

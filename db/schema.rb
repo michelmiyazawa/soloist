@@ -10,7 +10,77 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_10_053626) do
+ActiveRecord::Schema.define(version: 2020_12_17_030810) do
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "review_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "genres", force: :cascade do |t|
+    t.string "name"
+    t.integer "genre_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "review_images", force: :cascade do |t|
+    t.integer "review_id", null: false
+    t.string "review_image_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["review_id"], name: "index_review_images_on_review_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "shop_id", null: false
+    t.float "rate", default: 0.0, null: false
+    t.text "review"
+    t.string "bgm"
+    t.string "space"
+    t.string "volume"
+    t.string "eyes"
+    t.string "busy"
+    t.string "soloist"
+    t.date "visit_date"
+    t.integer "use_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "title"
+  end
+
+  create_table "shop_images", force: :cascade do |t|
+    t.integer "shop_id", null: false
+    t.string "image_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["shop_id"], name: "index_shop_images_on_shop_id"
+  end
+
+  create_table "shops", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "name_kana", null: false
+    t.integer "prefecture", null: false
+    t.string "address", null: false
+    t.string "zipcode", null: false
+    t.string "phonenumber", null: false
+    t.string "hp"
+    t.string "regular_holiday", null: false
+    t.string "opning_hours", null: false
+    t.string "acsess", null: false
+    t.string "parking", null: false
+    t.string "seats", null: false
+    t.integer "payment"
+    t.integer "facility"
+    t.integer "genre_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.float "latitude"
+    t.float "longitude"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
