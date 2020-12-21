@@ -4,7 +4,7 @@
     <title>Soloist</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= include_gon %>
+    <!--アイコン-->
     <script src="https://kit.fontawesome.com/033f0a5b2b.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -17,6 +17,11 @@
     <p class="alert"><%= alert %></p>
     <div class="body">
     <%= yield %>
+    <span id="back">
+      <a href="#">
+        <%= image_tag "arrow.png" %>
+      </a>
+    </span>
     </div>
   </body>
 </html>

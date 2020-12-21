@@ -1,14 +1,22 @@
-<% @reviews.each do |review| %>
+<div class="container">
+<% @shop.reviews.each do |review| %>
+<div>
+  タイトル
 <%= link_to shop_review_path(@shop.id, review.id) do %>
   <%= review.title %>
 <% end %>
+ <%= review.use_time %>
+  <%= review.visit_date %>
+  レビュー<%= review.review %>
+
 <!--いいね-->
   <div id="favorites_buttons_<%= review.id %>">
     <%= render partial: 'favorites/favorite', locals: {review: review, shop: @shop} %>
   </div>
 
-
-<div id="rate<%= review.id%>"></div>
+<!--レート-->
+<div id="rate<%= review.id%>">評価<%= review.rate %></div>
+<!--レビュー画像-->
 <% if review.review_images.present? %>
   <% review.review_images.each do |review_image| %>
     <%= attachment_image_tag review_image, :review_image, size: "100x100" %>
@@ -16,16 +24,16 @@
 <% else %>
   <%= image_tag 'no_image.jpg', size: '100x100' %>
 <% end %>
-  <%= review.review %>
-  <%= review.use_time %>
-  <%= review.visit_date %>
-  <%= review.rate %>
-  <%= review.space %>
-  <%= review.bgm %>
-  <%= review.eyes %>
-  <%= review.soloist %>
-  <%= review.volume %>
-  <%= review.busy %>
+
+
+
+  <%#= review.space %>
+  <%#= review.bgm %>
+  <%#= review.eyes %>
+  <%#= review.soloist %>
+  <%#= review.volume %>
+  <%#= review.busy %>
+  </div>
   <script>
   $('#rate<%= review.id%>').raty({
     size      : 36,
@@ -37,3 +45,4 @@
 </script>
 <% end %>
 <%= paginate @reviews %>
+</div>

@@ -29,6 +29,18 @@
  *
  */
 
+ //topに戻るボタン
+  (function() {
+    ('#back a').on('click',function(event){
+      ('body, html').animate({
+        scrollTop:0
+      }, 800);
+      event.preventDefault();
+    });
+  });
+  
+  // raty
+
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     define(['jquery'], factory);

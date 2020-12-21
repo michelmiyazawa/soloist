@@ -10,7 +10,7 @@ class ReviewsController < ApplicationController
     @review = current_user.reviews.new(review_params)
     @review.shop_id = @shop.id
     if @review.save
-      redirect_to shop_path(@shop.id)
+      redirect_to shop_path(@shop.id), notice:"「投稿しました」"
     else
       render :new
     end
@@ -26,22 +26,25 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
 
     if @review.update(review_params)
-      redirect_to shop_path(@shop.id)
+      redirect_to shop_path(@shop.id), notice:"更新しました"
     else
       render :edit
     end
   end
 
   def destroy
+    @shop = Shop.find(params[:shop_id])
+    @reviews = Review.page(params[:page]).reverse_order
     @review = Review.find(params[:id])
     @review.destroy
-    redirect_to :root
+    flash[:success] = '投稿を削除しました。'
+    redirect_to shop_reviews_path(@shop.id)
   end
 
   def show
     @shop = Shop.find(params[:shop_id])
     @review = Review.find(params[:id])
-    
+
   end
 
   def index

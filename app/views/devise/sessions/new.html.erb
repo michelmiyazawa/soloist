@@ -1,6 +1,5 @@
-
-<h2>ログイン</h2>
 <div class="text-center">
+  <h2>ログイン</h2>
   <%= form_with model: @user, url:user_session_path, method: :post, local: true do |f| %>
   <div class="field">
     <%= f.label :email, "メールアドレス" %><br />
