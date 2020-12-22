@@ -1,58 +1,60 @@
-<div class="container">
-<h1>レビュー詳細</h1>
-<table class="table">
-<tr>
-<th><p>店名</p></th>
-<td><%= @shop.name %></td>
-</tr>
+<div class="container contents">
+  <h1>レビュー詳細</h1>
+  <table class="table">
+  <tr>
+  <th><p>店名</p></th>
+  <td><%= @shop.name %></td>
+    </tr>
 
 
 
-<div id="rate<%= @review.id%>"></div>
+  <div id="rate<%= @review.id %>"></div>
 
 
 
-<th><p>レビュー</p>
-<%= @review.review %>
-</th>
-<% if @review.review_images.present? %>
-  <% @review.review_images.each do |review_image| %>
-    <%= attachment_image_tag review_image, :review_image, size: "500x300" %>
+  <th><p>レビュー</p>
+  <%= @review.review %>
+  </th>
+  <% if @review.review_images.present? %>
+    <% @review.review_images.each do |review_image| %>
+      <%= attachment_image_tag review_image, :review_image, size: "500x300" %>
+    <% end %>
+  <% else %>
+    <%= image_tag 'no_image.jpg', size: '200x200' %>
   <% end %>
-<% else %>
-  <%= image_tag 'no_image.jpg', size: '200x200' %>
-<% end %>
-<p></p>
-<%= @review.use_time %>
-<p></p>
-<%= @review.visit_date %>
-<p></p>
-<%= @review.rate %>
-<p></p>
-<%= @review.space %>
-<p></p>
-<%= @review.bgm %>
-<p></p>
-<%= @review.eyes %>
-<p></p>
-<%= @review.soloist %>
-<p></p>
-<%= @review.volume %>
-<p></p>
-<%= @review.busy %>
-</table>
+  <p></p>
+  <%= @review.use_time %>
+  <p></p>
+    <%= @review.visit_date %>
+  <p></p>
+  <%= @review.rate %>
+  <p></p>
+  <%= @review.space %>
+  <p></p>
+  <%= @review.bgm %>
+  <p></p>
+  <%= @review.eyes %>
+  <p></p>
+  <%= @review.soloist %>
+  <p></p>
+  <%= @review.volume %>
+  <p></p>
+    <%= @review.busy %>
+  </table>
 
-<!--いいね-->
- <div id="favorites_buttons_<%= @review.id %>">
-    <%= render partial: 'favorites/favorite', locals: {review: @review, shop: @shop} %>
+  <!--いいね-->
+   <div id="favorites_buttons_<%= @review.id %>">
+      <%= render partial: 'favorites/favorite', locals: {review: @review, shop: @shop} %>
+    </div>
+
+
+
+  <% if current_user.id == @review.user.id %>
+  <%= link_to "編集", edit_shop_review_path(@shop.id, @review.id) %>
+  <%= link_to "削除", shop_review_path(@review), method: :delete %>
+  <% end %>
+  <%= link_to "レビュー一覧に戻る", shop_reviews_path(@shop.id) %>
   </div>
-
-
-
-
-<%= link_to "編集", edit_shop_review_path(@shop.id, @review.id) %>
-<%= link_to "削除", shop_review_path(@review), method: :delete %>
-</div>
 
 
 <script>
@@ -60,7 +62,9 @@
     size      : 36,
     starOff   : '<%= asset_path('star-off.png') %>',
     starOn    : '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
     readOnly: true,
+    half: true,
     score: <%= @review.rate %>,
   });
 </script>

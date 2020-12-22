@@ -1,92 +1,94 @@
-
-<div class="container">
-
-<!--mapの表示-->
-<style type="text/css">
-  #map { height: 200px;
-         width: 70%;}
-</style>
-<div id="map"></div>
-
-<h1><%= @shop.name %></h1>(<%= @shop.name_kana %>)
-<table  class='table table-bordered'>
-  <h1>店舗詳細</h1>
-  <tr>
-    <th class="table-active col-xs-2">店名</th>
-    <td><%= @shop.name %>(<%= @shop.name_kana %>)</td>
-  </tr>
-  <tr>
-    <th class="table-active">ジャンル</th>
-    <td><%= @genre_name %></td>
-  </tr>
-
-  <%= link_to "店舗編集",edit_shop_path(@shop) %>
+<div class="container contents">
+  <strong><%= @shop.name %></strong>(<%= @shop.name_kana %>)
+  <!--レート表示-->
+  <div class="average-review-rate" data-score=<%= @average_review %>></div>
   <!--画像表示-->
   <% if @shop.shop_images.present? %>
-  <% @shop.shop_images.each do |image| %>
-    <%= attachment_image_tag image, :image, size: "500x300" %>
+    <% @shop.shop_images.each do |image| %>
+      <%= attachment_image_tag image, :image, size: "500x300" %>
+    <% end %>
+  <% else %>
+    <%= image_tag 'no_image.jpg', size: '200x200' %>
   <% end %>
-<% else %>
-  <%= image_tag 'no_image.jpg', size: '200x200' %>
-<% end %>
-  <tr>
-    <th class="table-active">住所</th>
-    <td><%= @shop.address %></td>
-  </tr>
-  <tr>
-    <th class="table-active">アクセス</th>
-    <td><%= @shop.acsess %></td>
-  </tr>
-  <tr>
-    <th class="table-active">営業時間</th>
-    <td><%= @shop.opning_hours %></td>
-  </tr>
-  <tr>
-    <th class="table-active">定休日</th>
-    <td><%= @shop.regular_holiday %></td>
-  </tr>
-  <tr>
-    <th class="table-active">支払い方法</th>
-    <td><%= @shop.payment %></td>
-  </tr>
-  <tr>
-    <th class="table-active">座席数</th>
-    <td><%= @shop.seats %></td>
-  </tr>
-  <tr>
-    <th class="table-active">設備</th>
-    <td><%= @shop.facility %></td>
-  </tr>
-  <tr>
-    <th class="table-active">駐車場</th>
-    <td><%= @shop.parking %></td>
-  </tr>
-  <tr>
-    <th class="table-active">TEL</th>
-    <td><%= @shop.phonenumber %></td>
-  </tr>
-  <tr>
-    <th class="table-active">HP</th>
-    <td><%= @shop.hp %></td>
-  </tr>
-  <tr>
-    <th class="table-active">都道府県</th>
-    <td><%= @shop.prefecture %></td>
-  </tr>
-  <tr>
-    <th class="table-active">郵便番号</th>
-    <td><%= @shop.zipcode %></td>
-  </tr>
-  <tr>
+  <%= link_to 'Twitterでお店をシェアする', "https://twitter.com/share?url=#{request.url}", title: 'Twitter', target: '_blank' %>
+  <%= link_to "店舗編集",edit_shop_path(@shop) %>
   <h2 class="comment-count"><%= link_to shop_reviews_path(@shop) do %>
-  <%= @shop.reviews.count %>件
-  <% end %>
-  のレビュー</h2>
-  <%= link_to "レビューを投稿する", new_shop_review_path(@shop) %>
+    <%= @shop.reviews.count %>件
+      <% end %>のレビュー</h2>
+    <%= link_to "レビューを投稿する", new_shop_review_path(@shop) %>
+  <table  class='table table-bordered'>
+    <h1>店舗情報</h1>
+    <tr>
+      <th class="table-active col-xs-2">店名</th>
+      <td><%= @shop.name %>(<%= @shop.name_kana %>)</td>
+    </tr>
+    <tr>
+      <th class="table-active">ジャンル</th>
+      <td><%= @genre_name %></td>
+    </tr>
+    <tr>
+      <th class="table-active">住所</th>
+      <td><%= @shop.address %></td>
+    </tr>
+    <tr>
+      <th class="table-active">アクセス</th>
+      <td><%= @shop.acsess %></td>
+    </tr>
+    <tr>
+      <th class="table-active">営業時間</th>
+      <td><%= @shop.opning_hours %></td>
+    </tr>
+    <tr>
+      <th class="table-active">定休日</th>
+      <td><%= @shop.regular_holiday %></td>
+    </tr>
+    <tr>
+      <th class="table-active">支払い方法</th>
+      <td><%= @shop.payment %></td>
+    </tr>
+    <tr>
+      <th class="table-active">座席数</th>
+      <td><%= @shop.seats %></td>
+    </tr>
+    <tr>
+      <th class="table-active">設備</th>
+      <td><%= @shop.facility %></td>
+    </tr>
+    <tr>
+      <th class="table-active">駐車場</th>
+      <td><%= @shop.parking %></td>
+    </tr>
+    <tr>
+      <th class="table-active">TEL</th>
+      <td><%= @shop.phonenumber %></td>
+    </tr>
+    <tr>
+      <th class="table-active">HP</th>
+      <td><%= @shop.hp %></td>
+    </tr>
+    <tr>
+      <th class="table-active">都道府県</th>
+      <td><%= @shop.prefecture %></td>
+    </tr>
+    <tr>
+      <th class="table-active">郵便番号</th>
+      <td><%= @shop.zipcode %></td>
+    </tr>
+  </table>
+<%= link_to "店舗一覧に戻る", shops_path %>
+  <!--mapの表示-->
+  <style type="text/css">
+    #map { height: 200px;
+           width: 70%;}
+  </style>
+<!--googleマップ表示-->
+<div id="map"></div>
+</div>
+</div>
 
-</table>
-</div>
-</div>
+
+
+
 <script type="text/javascript">
   function initMap() {
 // #latitude,longitudeから位置を特定
@@ -120,3 +122,19 @@
 <script async defer
               src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API'] %>&callback=initMap">
 </script>
+
+<script>
+  $('.average-review-rate').raty({
+    size      : 36,
+    starOff   : '<%= asset_path('star-off.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+    starOn    : '<%= asset_path('star-on.png') %>',
+    half: true,
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score')
+    }
+  });
+</script>
+
+</div>

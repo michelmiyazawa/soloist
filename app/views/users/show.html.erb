@@ -1,22 +1,28 @@
 <div class="container">
   <div class="raw">
-    <% if current_user.id == @user.id %>
-      <%= link_to "編集する", edit_user_path(@user.id) %>
-      <% end %>
-    <div class="mypage-top">
+
+    <div class="mypage-top contents">
       <%= attachment_image_tag @user, :profile_image, size: "60x60", fallback: "no_image.jpg", class: "user-img" %>
       <%= @user.name %> |
     <%= @user.sex %> |
     <%= @user.date_of_birth %> |
     <%= @user.introduction %>
+    <% if current_user.id == @user.id %>
+      <%= link_to "編集する", edit_user_path(@user.id) %>
+      <% end %>
     </div>
   </div>
-  <div class="raw">
+  <div class="raw contents">
     <!--店舗名,投稿日、星を入れたい-->
     レビュー投稿<%= @user.reviews.count %>件
     <% @user.reviews.each do |review| %>
     <table class="table">
-      <th>タイトル <%= review.title %></th>
+      <th>店名 | <%= link_to shop_path(review.shop.id) do %>
+      <%= review.shop.name %>
+      <% end %></th>
+      <th>タイトル | <%= link_to shop_review_path(review.id, review.shop.id) do %>
+      <%= review.title %>
+      <% end %></th>
       <td>
        評価<%= review.rate %>
      </td>

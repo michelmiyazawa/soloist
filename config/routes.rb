@@ -8,6 +8,9 @@ Rails.application.routes.draw do
       get 'quit'
     end
   end
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'users/sessions#new_guest'
+  end
   resources :shops do
     resources :reviews do
       resource :favorites, only: [:create, :destroy]

@@ -11,17 +11,17 @@
   </head>
 
   <body>
-
     <%= render "layouts/header" %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
     <div class="body">
-    <%= yield %>
-    <span id="back">
-      <a href="#">
-        <%= image_tag "arrow.png" %>
-      </a>
-    </span>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <%= yield %>
+      <span id="back">
+        <a href="#">
+          <%= image_tag "arrow.png" %>
+        </a>
+      </span>
     </div>
+    <%= render "layouts/footer" %>
   </body>
 </html>

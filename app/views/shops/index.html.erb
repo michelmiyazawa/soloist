@@ -1,19 +1,23 @@
-
-<div class="container">
+<div class="container contents">
   <h1>店舗一覧</h1>
-  <% @shops.each do |shop| %>
-   <div>
-     <h2>店名 <%= link_to "#{shop.name}", shop_path(shop.id) %></h2>
-      <h4>ジャンル<%= shop.genre_id %> | <%= shop.prefecture %></h4>
-  <% if shop.shop_images.present? %>
-  <% shop.shop_images.each do |image| %>
-    <%= attachment_image_tag image, :image, size: "200x150" %>
-  <% end %>
-<% else %>
-  <%= image_tag 'no_image.jpg', size: '200x150' %>
-<% end %>
-
-</div>
-  <% end %>
-</table>
+  <table class="table">
+    <% @shops.each do |shop| %>
+    <div>
+      <tr>
+        <th>店名</th>
+        <td> <%= link_to "#{shop.name}", shop_path(shop.id) %></td>
+        <th>ジャンル</th>
+        <td><%= shop.genre_id %></td>
+        <td><%= shop.prefecture %></td>
+        <td><% if shop.shop_images.present? %>
+          <% shop.shop_images.each do |image| %>
+          <%= attachment_image_tag image, :image, size: "200x150" %>
+        <% end %>
+        <% else %>
+        <%= image_tag 'no_image.jpg', size: '200x150' %>
+      <% end %>
+      </td>
+    </div>
+    <% end %>
+  </table>
 </div>

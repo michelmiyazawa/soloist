@@ -1,4 +1,4 @@
-<div class="container text-center">
+<div class="container text-center contents">
 <h2>新規登録</h2>
 
 <%= form_with model: @user, url:user_registration_path, local: true  do |f| %>
@@ -32,6 +32,6 @@
     <%= f.submit "新規登録" %>
   </div>
 <% end %>
-
+<%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %>
 <%= render "devise/shared/links" %>
 </div>

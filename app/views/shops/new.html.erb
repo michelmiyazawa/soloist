@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container contents">
 
 <h1>店舗登録</h1>
 <p>店舗登録の協力をお願いします。</br>
@@ -13,7 +13,7 @@
 <%= f.label :name, "店名" %>
 </th>
 <td>
- <%= f.text_field :name %>
+ <%= f.text_field :name, class: "form-control" %>
 </td>
 </tr>
 <tr>
@@ -21,7 +21,7 @@
 <%= f.label :name_kana, "店名（かな）" %>
 </th>
 <td>
- <%= f.text_field :name_kana %>
+ <%= f.text_field :name_kana, class: "form-control" %>
 </td>
 </tr>
 
@@ -51,7 +51,7 @@
 <%= f.label :zipcode, "郵便番号" %>
 </th>
 <td>
- <%= f.text_field :zipcode %>
+ <%= f.text_field :zipcode, class: "form-control" %>
 </td>
 </tr>
 
@@ -60,7 +60,7 @@
 <%= f.label :address, "住所" %>
 </th>
 <td>
- <%= f.text_field :address, size: "40x20" %>
+ <%= f.text_field :address, class: "form-control" %>
 </td>
 </tr>
 
@@ -69,7 +69,7 @@
 <%= f.label :phonenumber, "TEL" %>
 </th>
 <td>
- <%= f.text_field :phonenumber %>
+ <%= f.text_field :phonenumber, class: "form-control" %>
 </td>
 </tr>
 
@@ -78,7 +78,7 @@
 <%= f.label :hp, "HP" %>
 </th>
 <td>
-<%= f.text_field :hp %>
+<%= f.text_field :hp, class: "form-control" %>
 </td>
 </tr>
 <tr>
@@ -86,7 +86,7 @@
 <%= f.label :regular_holiday, "定休日" %>
 </th>
 <td>
-<%= f.text_field :regular_holiday %>
+<%= f.text_field :regular_holiday, class: "form-control" %>
 </td>
 </tr>
 <tr>
@@ -94,7 +94,7 @@
 <%= f.label :opning_hours, "営業時間" %>
 </th>
 <td>
-<%= f.text_area :opning_hours, size: "20x10" %>
+<%= f.text_area :opning_hours, class: "form-control" %>
 </td>
 </tr>
 <tr>
@@ -102,7 +102,7 @@
 <%= f.label :acsess, "アクセス" %>
 </th>
 <td>
-<%= f.text_field :acsess %>
+<%= f.text_area :acsess, class: "form-control" %>
 </td>
 </tr>
 <tr>
@@ -110,7 +110,7 @@
 <%= f.label :parking, "駐車場" %>
 </th>
 <td>
-<%= f.text_field :parking %>
+<%= f.text_field :parking, class: "form-control" %>
 </td>
 </tr>
 
@@ -119,7 +119,7 @@
 <%= f.label :seats, "座席数" %>
 </th>
 <td>
-<%= f.text_field :seats %>
+<%= f.text_field :seats, class: "form-control" %>
 </td>
 </tr>
 <tr>
