@@ -4,9 +4,9 @@ class ApplicationController < ActionController::Base
 
   def set_search
     @search = Shop.ransack(params[:q])
-    @shop = @search.result
+    @search_shops = @search.result
   end
-  
+
   protected
 
   def configure_permitted_parameters

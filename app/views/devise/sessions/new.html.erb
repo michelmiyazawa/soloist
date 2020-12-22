@@ -1,6 +1,5 @@
-
-<h2>ログイン</h2>
-<div class="text-center">
+<div class="container text-center contents">
+  <h2>ログイン</h2>
   <%= form_with model: @user, url:user_session_path, method: :post, local: true do |f| %>
   <div class="field">
     <%= f.label :email, "メールアドレス" %><br />
@@ -16,6 +15,6 @@
     <%= f.submit "ログインする" %>
   </div>
 <% end %>
-
+<%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %>
 <%= render "devise/shared/links" %>
 </div>

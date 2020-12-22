@@ -1,14 +1,19 @@
-<div class="container">
- <table class="table">
+<div class="container contents">
+
 <h1>店舗登録</h1>
+<p>店舗登録の協力をお願いします。</br>
+入力項目が多数あるので、不明な箇所は未入力のままでも登録できます。</br>
+一度店舗を登録した後はユーザーなら誰でも情報を編集することができます。</br>
+既に同じ店舗が登録されている場合は後から登録したページは削除されますのでご注意ください。</p>
 <%= form_with model: @shop, local: true do |f| %>
+<table class="table">
 <%= render 'layouts/error_messages', model: f.object %>
 <tr>
 <th>
 <%= f.label :name, "店名" %>
 </th>
 <td>
- <%= f.text_field :name %>
+ <%= f.text_field :name, class: "form-control" %>
 </td>
 </tr>
 <tr>
@@ -16,7 +21,7 @@
 <%= f.label :name_kana, "店名（かな）" %>
 </th>
 <td>
- <%= f.text_field :name_kana %>
+ <%= f.text_field :name_kana, class: "form-control" %>
 </td>
 </tr>
 
@@ -30,7 +35,14 @@
  <%= f.label :genre_id, "ジャンル" %>
 </th>
 <td>
- <%= f.select :genre_id, Genre.genre_names.keys, {} %>
+ <%= f.select :genre_id, {
+     "---":0,
+     居酒屋:1,カレー:2,ラーメン:3,焼き肉:4,カフェ:5,鍋:6,寿司:7,
+     魚介・海鮮:8,焼き鳥・鳥料理:9,和食:10,天ぷら:11,うどん・そば:12,すき焼き・しゃぶしゃぶ:13,おでん:14,
+     お好み焼き・たこ焼き:15,ステーキ・ハンバーグ:16,鉄板焼:17,パスタ・ピザ:18,ハンバーガー:19,洋食:20,
+     フレンチ:21,イタリアン:22,西洋各国料理:23,中華料理:24,
+     韓国料理:25,バー:26,ファミレス:27,定食:28,丼もの:29,その他:30,
+   }, {} %>
 </td>
 
 </tr>
@@ -39,7 +51,7 @@
 <%= f.label :zipcode, "郵便番号" %>
 </th>
 <td>
- <%= f.text_field :zipcode %>
+ <%= f.text_field :zipcode, class: "form-control" %>
 </td>
 </tr>
 
@@ -48,7 +60,7 @@
 <%= f.label :address, "住所" %>
 </th>
 <td>
- <%= f.text_field :address %>
+ <%= f.text_field :address, class: "form-control" %>
 </td>
 </tr>
 
@@ -57,7 +69,7 @@
 <%= f.label :phonenumber, "TEL" %>
 </th>
 <td>
- <%= f.text_field :phonenumber %>
+ <%= f.text_field :phonenumber, class: "form-control" %>
 </td>
 </tr>
 
@@ -66,7 +78,7 @@
 <%= f.label :hp, "HP" %>
 </th>
 <td>
-<%= f.text_field :hp %>
+<%= f.text_field :hp, class: "form-control" %>
 </td>
 </tr>
 <tr>
@@ -74,7 +86,7 @@
 <%= f.label :regular_holiday, "定休日" %>
 </th>
 <td>
-<%= f.text_field :regular_holiday %>
+<%= f.text_field :regular_holiday, class: "form-control" %>
 </td>
 </tr>
 <tr>
@@ -82,7 +94,7 @@
 <%= f.label :opning_hours, "営業時間" %>
 </th>
 <td>
-<%= f.text_field :regular_holiday %>
+<%= f.text_area :opning_hours, class: "form-control" %>
 </td>
 </tr>
 <tr>
@@ -90,7 +102,7 @@
 <%= f.label :acsess, "アクセス" %>
 </th>
 <td>
-<%= f.text_field :acsess %>
+<%= f.text_area :acsess, class: "form-control" %>
 </td>
 </tr>
 <tr>
@@ -98,7 +110,7 @@
 <%= f.label :parking, "駐車場" %>
 </th>
 <td>
-<%= f.text_field :parking %>
+<%= f.text_field :parking, class: "form-control" %>
 </td>
 </tr>
 
@@ -107,7 +119,7 @@
 <%= f.label :seats, "座席数" %>
 </th>
 <td>
-<%= f.text_field :seats %>
+<%= f.text_field :seats, class: "form-control" %>
 </td>
 </tr>
 <tr>
@@ -117,6 +129,6 @@
 <tr>
  <th><%= f.submit %></th>
  </tr>
-<% end %>
 </table>
+<% end %>
 </div>
