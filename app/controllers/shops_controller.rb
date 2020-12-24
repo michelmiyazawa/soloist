@@ -47,7 +47,7 @@ class ShopsController < ApplicationController
     if @search
       @shops = @search.result(distinct: true)
     end
-    
+
   end
 
   def destroy
