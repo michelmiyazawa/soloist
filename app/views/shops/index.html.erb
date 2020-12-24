@@ -1,23 +1,29 @@
-<div class="container contents">
-  <h1>店舗一覧</h1>
-  <table class="table">
-    <% @shops.each do |shop| %>
-    <div>
-      <tr>
-        <th>店名</th>
-        <td> <%= link_to "#{shop.name}", shop_path(shop.id) %></td>
-        <th>ジャンル</th>
-        <td><%= shop.genre_id %></td>
-        <td><%= shop.prefecture %></td>
-        <td><% if shop.shop_images.present? %>
-          <% shop.shop_images.each do |image| %>
+
+<article id ="index">
+  <div class="container contents">
+    <div class="row">
+      <section class="restaurants col-md-12">
+        <h2>店舗一覧</h2>
+        <div class="row">
+          <% @shops.each do |shop| %>
+          <div class="content col-md-3">
+            <p><% if shop.shop_images.present? %>
+          <% shop.shop_images.first(1).each do |image| %>
           <%= attachment_image_tag image, :image, size: "200x150" %>
         <% end %>
         <% else %>
         <%= image_tag 'no_image.jpg', size: '200x150' %>
-      <% end %>
-      </td>
+      <% end %></p>
+            <p>店名：<%= shop.name %></p>
+
+            <p>住所：<%= shop.address %></p>
+
+            <p><%= link_to shop_path(shop) do %>
+              詳細を見る
+              <% end %></p>
+            </div>
+            <% end %>
+          </div>
+        </section>
+      </div>
     </div>
-    <% end %>
-  </table>
-</div>

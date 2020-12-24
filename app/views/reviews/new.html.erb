@@ -34,15 +34,15 @@
           <td><%= f.text_field :eyes %></td>
         </tr>
         <tr>
-          <th><%= f.label :busy, "賑やかさ" %></th>
+          <th><%= f.label :busy, "混雑度" %></th>
           <td> <%= f.text_field :busy %></td>
         </tr>
         <tr>
-          <th><%= f.label :soloist, "soloist率" %></th>
+          <th><%= f.label :soloist, "soloist率(１人客の多さ)" %></th>
           <td><%= f.text_field :soloist %></td>
         </tr>
         <tr>
-          <th><%= f.label :use_time, "時間帯" %></th>
+          <th><%= f.label :use_time, "利用時間帯" %></th>
           <td>
             <div class="field">
               <%= f.label :morning, "朝" %>
@@ -64,7 +64,7 @@
         </tr>
       </table>
     </div>
-    <%= f.submit "更新する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+    <%= f.submit "投稿する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
     <% end %>
   </div>
 </div>

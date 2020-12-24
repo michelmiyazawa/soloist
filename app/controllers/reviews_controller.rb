@@ -10,7 +10,7 @@ class ReviewsController < ApplicationController
     @review = current_user.reviews.new(review_params)
     @review.shop_id = @shop.id
     if @review.save
-      redirect_to shop_path(@shop.id), notice:"投稿しました"
+      redirect_to shop_review_path(@shop.id, @review.id), notice:"投稿しました"
     else
       render :new
     end
