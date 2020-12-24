@@ -1,52 +1,62 @@
 <div class="container contents">
   <h1>レビュー詳細</h1>
-  <table class="table">
-  <tr>
-  <th><p>店名</p></th>
-  <td><%= @shop.name %></td>
-    </tr>
+  <h2><%= link_to shop_path(@review.shop.id) do %><%= @review.shop.name %><% end %></h2>
+   <h2 id="rate<%= @review.id %>">評価<%= @review.rate %></h2>
+    <%= link_to user_path(@review.user.id) do %><%= @review.user.name %><% end %>
+    <table class="table">
+      <tr>
+        <th>店名</th>
+        <td><%= @shop.name %></td>
+      </tr>
+      <tr>
+        <th>タイトル</th>
+        <td><%= @review.title %></td>
+      </tr>
+      <tr>
+        <th>レビュー</th>
+        <td><%= @review.review %></td>
+      </tr>
+      <tr>
+        <th>利用時間帯</th>
+        <td><%= @review.use_time %></td>
+      </tr>
+      <tr>
+        <th>訪問日</th>
+        <td><%= @review.visit_date %></td>
+      </tr>
+      <tr>
+        <th>距離感</th>
+        <td><%= @review.space %></td>
+      </tr>
+      <tr>
+        <th>BGM</th>
+        <td><%= @review.bgm %></td>
+      </tr>
+      <tr>
+        <th>周りの視線</th>
+        <td><%= @review.eyes %></td>
+      </tr>
+      <tr>
+        <th>soloist率(１人客の多さ)</th>
+        <td><%= @review.soloist %></td>
+      </tr>
+      <tr>
+        <th>ご飯の量</th>
+        <td><%= @review.volume %></td>
+      </tr>
+      <tr>
+        <th>混雑度</th>
+        <td><%= @review.busy %></td>
+      </tr>
+    </table>
 
-
-
-  <div id="rate<%= @review.id %>"></div>
-
-
-
-  <th><p>レビュー</p>
-  <%= @review.review %>
-  </th>
-  <% if @review.review_images.present? %>
     <% @review.review_images.each do |review_image| %>
       <%= attachment_image_tag review_image, :review_image, size: "500x300" %>
     <% end %>
-  <% else %>
-    <%= image_tag 'no_image.jpg', size: '200x200' %>
-  <% end %>
-  <p></p>
-  <%= @review.use_time %>
-  <p></p>
-    <%= @review.visit_date %>
-  <p></p>
-  <%= @review.rate %>
-  <p></p>
-  <%= @review.space %>
-  <p></p>
-  <%= @review.bgm %>
-  <p></p>
-  <%= @review.eyes %>
-  <p></p>
-  <%= @review.soloist %>
-  <p></p>
-  <%= @review.volume %>
-  <p></p>
-    <%= @review.busy %>
-  </table>
-
   <!--いいね-->
    <div id="favorites_buttons_<%= @review.id %>">
       <%= render partial: 'favorites/favorite', locals: {review: @review, shop: @shop} %>
     </div>
-
 
 
   <% if current_user.id == @review.user.id %>
