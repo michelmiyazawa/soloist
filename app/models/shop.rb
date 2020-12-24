@@ -5,8 +5,8 @@ class Shop < ApplicationRecord
   accepts_attachments_for :shop_images, attachment: :image
 
   geocoded_by :address #addressカラムを基準に緯度経度を算出する
- after_validation :geocode, if: :address_changed? #住所変更時に緯度経度も変更する
- 
+  after_validation :geocode, if: :address_changed? #住所変更時に緯度経度も変更する
+
   enum prefecture:{
      "---":0,
      北海道:1,青森県:2,岩手県:3,宮城県:4,秋田県:5,山形県:6,福島県:7,

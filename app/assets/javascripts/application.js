@@ -28,8 +28,8 @@
  * version: 3.0.0
  *
  */
- 
- 
+
+
 
  //topに戻るボタン
   (function() {
@@ -40,7 +40,7 @@
       event.preventDefault();
     });
   });
-  
+
   // raty
 
 (function(root, factory) {
