@@ -34,18 +34,22 @@ class ShopsController < ApplicationController
      韓国料理:25,バー:26,ファミレス:27,定食:28,丼もの:29,その他:30,
    }
     genre_list.map{|genre| @genre_name = genre[0] if genre[1] == @shop.genre_id}
-
+    
+    # レビューの平均点
     if @shop.reviews.blank?
       @average_review = 0
     else
       @average_review = @shop.reviews.average(:rate)
     end
+
+    @shop_images = @shop.shop_images
   end
 
   def index
     @shops = Shop.all
     if @search
       @shops = @search.result(distinct: true)
+
     end
 
   end

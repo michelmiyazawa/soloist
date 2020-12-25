@@ -6,7 +6,7 @@
   <tr>
     <td><%= link_to user_path(user) do %><%= user.name %><% end %></td>
     <td>
-      <%= attachment_image_tag user, :profile_image, size: "60x60", fallback: "no_image.jpg" %>
+      <%= attachment_image_tag user, :profile_image, size: "60x60", fallback: "no_image.jpg", class: "user-img" %>
 
       </td>
     <td><%= user.sex %></td>
