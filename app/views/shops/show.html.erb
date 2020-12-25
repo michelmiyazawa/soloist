@@ -1,22 +1,50 @@
 <div class="container contents">
   <strong><%= @shop.name %></strong>(<%= @shop.name_kana %>)
-  <!--レート表示-->
-  <div class="average-review-rate" data-score=<%= @average_review %>></div>
-  <!--画像表示-->
+  <!--レート表示(round(1)で小数点切り捨て-->
+  <h2 class="average-review-rate" data-score=<%= @average_review %>>【評価】<%= @average_review.round(1) %></h2>
+
+
+  <!--店舗画像スライドショー-->
   <% if @shop.shop_images.present? %>
-    <% @shop.shop_images.each do |image| %>
-      <%= attachment_image_tag image, :image, size: "500x300" %>
-    <% end %>
+   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="3000">
+     <ol class="carousel-indicators">
+       <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+       <% @shop.shop_images.drop(1).count.times do |index| %>
+       <li data-target="#carouselExampleIndicators" data-slide-to="#{index}"></li>
+       <% end %>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+        <% @shop.shop_images.first(1).each do |image| %>
+          <%= attachment_image_tag image, :image, class: "carousel_image", size: "1000x600"  %>
+        <% end %>
+        </div>
+        <% @shop.shop_images.drop(1).each do |image| %>
+          <div class="carousel-item">
+          <%= attachment_image_tag image, :image, class: "carousel_image", size: "1000x600" %>
+          </div>
+        <% end %>
+        </div>
+        <!--前後のコントロールボタン-->
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+    </div>
   <% else %>
     <%= image_tag 'no_image.jpg', size: '200x200' %>
   <% end %>
-  <%= link_to 'Twitterでお店をシェアする', "https://twitter.com/share?url=#{request.url}", title: 'Twitter', target: '_blank' %>
-  <%= link_to "店舗編集",edit_shop_path(@shop) %>
-  <h2 class="comment-count"><%= link_to shop_reviews_path(@shop) do %>
+    <%= link_to 'Twitterでお店をシェアする', "https://twitter.com/share?url=#{request.url}", title: 'Twitter', target: '_blank' %>
+    <%= link_to "店舗編集",edit_shop_path(@shop) %>
+    <h2 class="comment-count"><%= link_to shop_reviews_path(@shop) do %>
     <%= @shop.reviews.count %>件
-      <% end %>のレビュー</h2>
+    <% end %>のレビュー</h2>
     <%= link_to "レビューを投稿する", new_shop_review_path(@shop) %>
-  <table  class='table table-bordered'>
+    <table  class='table table-bordered'>
     <h1>店舗情報</h1>
     <tr>
       <th class="table-active col-xs-2">店名</th>
@@ -129,5 +157,6 @@
     }
   });
 </script>
+
 
 </div>
