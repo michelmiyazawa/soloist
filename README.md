@@ -22,6 +22,7 @@ soloist｛意味　独唱あるいは独奏する人のこと。｝
 週末に美味しいものを食べたくなったが、誘う友達がいないとき。
 1人で行くお店がいつも一緒でマンネリ化したとき。
 
+
 ## 設計書
 
 ### 機能一覧
@@ -35,5 +36,9 @@ https://docs.google.com/spreadsheets/d/1l9aa3FTrUmoSajN0SUZB7w2ip6pvAGjEqdx0AN5X
 - IDE：Cloud9
 
 ## 使用素材
-- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
-- 使用しない場合は、使用素材の項目をREADMEから削除してください。
+ぱくたそ　https://www.pakutaso.com/
+O-DAN https://o-dan.net/ja/
+お名前.com https://www.onamae.com/
+
+
+## 開発環境　
